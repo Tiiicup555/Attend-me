@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Special+Gothic+Expanded+One&display=swap');
+
+@import '../../pages/shared/home/home.css';
+@import '../../pages/shared/login/login.css';
+@import '../../layout/const/sidebar.css';
+
+
+body {
+  background: var(--bg);
+  margin: 0;
+  scroll-behavior: smooth;
+  height: 100vh;
+  overflow: hidden;
+  --primary: #4f679b;
+  --black: #000;
+  --gray: #cfcfcf;
+  --white: #fff;
+  --white700: rgba(255, 255, 255, 0.7);
+  --green: #8fbb33;
+  --orange: #ef7f1a;
+  --yellow: #ffd60a;
+  --red: #ff4d4f;
+
+  --bg: #f1f4f9;
+  --content: #fff;
+  --border: #dedede;
+  --modal: #f0f0f0;
+  --stroke: #8b8b8b;
+  --gr: #4f679b;
+  --grv: linear-gradient(225deg, #bb65ff 0%, #4c6fff 100%);
+  --box-shadow: 0px 0px 20px rgba(40, 105, 254, 0.07);
+}
+
+#root {
+  height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: var(--black);
+  margin: 0;
+  font-size: 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+}
+
+b {
+  font-weight: 600;
+}
+
+input {
+  font-size: 15px;
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 6000000000000s 0s, color 6000000000000s 0s !important;
+  -webkit-transition: background-color 6000000000000s 0s, color 6000000000000s 0s !important;
+  -moz-transition: background-color 6000000000000s 0s, color 6000000000000s 0s !important;
+  -ms-transition: background-color 6000000000000s 0s, color 6000000000000s 0s !important;
+  -o-transition: background-color 6000000000000s 0s, color 6000000000000s 0s !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary);
+  border-radius: 10px;
+}
+
+.left {
+  padding: 20px 20px;
+}

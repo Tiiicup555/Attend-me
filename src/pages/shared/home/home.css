@@ -1,0 +1,90 @@
+
+.home-body {
+    display: flex;
+}
+ 
+.home-aside {
+    width: 250px;
+    height: 1024px;
+    background-color: #006FFD;
+    padding: 22px 20px 0px 10px;
+}
+
+.aside-title {
+    width: 135px;
+    padding-bottom: 10px;
+    color: white;
+    padding-left: 3px;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24.2px;
+    letter-spacing: 1%;
+    text-align: center;
+}
+
+.aside-classes {
+    background-color: #006FFD;
+    padding-top: 17px;
+    border: none !important;
+}
+
+.aside-class {
+    display: flex !important;
+    justify-content: start !important;
+    align-items: center !important;
+    color: white !important;
+    width: 100% !important; 
+    height: 60px !important;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.aside-class:hover {
+    color: black !important;
+    background-color: white !important;
+    border-radius: 10px;
+}
+
+.aside-class.ant-menu-item-selected {
+    color: black !important;
+    background-color: white !important;
+}
+
+.home-right {
+    width: 100%;
+}
+
+.home-header {
+    display: flex;
+    height: 108px;
+    left: 259px;
+    background-color: white;
+    padding: 29px 25px 29px 35px;
+    box-shadow: 0px 8px 30px 0px #00000024;
+    justify-content: space-between;
+}
+
+.header-right {
+    display: flex;
+}
+
+.header-btn {
+    width: 210px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #006FFD;
+}
+
+.home-function {
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.home-icon {
+    border: none;
+}
+
+
+
