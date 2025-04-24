@@ -33,7 +33,10 @@ const LoginAntd = () => {
       const user = userInfo.data.find(u => u.username === values.username);
       if (user) {
         const fullName = `${user.first_name} ${user.last_name}`;
+        const teacherId = user.id;
+
         localStorage.setItem('user', fullName);
+        localStorage.setItem('teacherId', teacherId);
       }
   
       navigate('/home');

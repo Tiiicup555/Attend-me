@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "antd";
 import { ArrowLeft } from "../../app/styles/icons/icons";
@@ -33,6 +32,11 @@ export const Sidebar = ({ children }) => {
         </div>
       </aside>
       <div className="side-right">{children}</div>
+      <div className="circle-background1">
+            <div className="circle1 circle-red-top-right1"></div>
+            <div className="circle1 circle-white-overlap1"></div>
+            <div className="circle1 circle-white-bottom-left1"></div>
+        </div>
     </div>
   );
 };
