@@ -3,7 +3,7 @@ import { axiosInstance } from "../../api/api";
 
 export const getGroups = async () => {
     try {
-      const response = await axiosInstance.get('http://193.46.198.101/api/groups/');
+      const response = await axiosInstance.get('/api/groups/');
       return { success: true, data: response.data };
     } catch (error) {
       console.error('Ошибка при получении групп:', error);
@@ -16,7 +16,7 @@ export const getGroupDetail = async (id) => {
     const token = localStorage.getItem("token");
   
     try {
-      const response = await axios.get(`http://193.46.198.101/api/groups/${id}/`, {
+      const response = await axios.get(`/api/groups/${id}/`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -32,7 +32,7 @@ export const getGroupDetail = async (id) => {
 
 export const createGroup = async (data) => {
     try {
-      const response = await axiosInstance.post("http://193.46.198.101/api/groups/", data);
+      const response = await axiosInstance.post("/api/groups/", data);
       return { success: true, data: response.data };
     } catch (error) {
       return { success: false, error };
