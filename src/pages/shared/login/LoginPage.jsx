@@ -1,22 +1,48 @@
-import React from 'react';
-import { Button, Form, Input } from 'antd';
+import React, { useState } from 'react';
+import { Button, Form, Input, message } from 'antd';
 import { ArrowRight, KeyPassword, UserProfile } from '../../../app/styles/icons/icons';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { loginFetch } from '../../../redux/slice/auth';
+import axios from 'axios';
 
 
 const LoginAntd = () => {
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const onFinish = (values) => {
-    const body = {
-      username: values.username,
-      password: values.password,
-    };
-    const url = '/api/token/';
-    dispatch(loginFetch(body, url, navigate));
+  const onFinish = async (values) => {
+    setLoading(true);
+    try {
+      const response = await axios.post('http://193.46.198.101/api/token/', {
+        username: values.username,
+        password: values.password,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      const token = response.data.access;
+      localStorage.setItem('accessToken', token);
+
+      const userInfo = await axios.get('http://193.46.198.101/api/teachers/', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      const user = userInfo.data.find(u => u.username === values.username);
+      if (user) {
+        const fullName = `${user.first_name} ${user.last_name}`;
+        localStorage.setItem('user', fullName);
+      }
+  
+      navigate('/home');
+    } catch (error) {
+      console.error(error);
+      message.error('Неверный логин или пароль');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

@@ -5,7 +5,7 @@ export const HomePage = () => {
   return (
     <Layout>
       <div>
-        sflmvkdlsavfjdakl
+        
       </div>
     </Layout>
   );

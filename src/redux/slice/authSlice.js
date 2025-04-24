@@ -1,17 +1,43 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { axiosInstance } from '../../api/api';
 
-export const loginUser = createAsyncThunk(
-  'userInfo/loginUser',
+export const LoginUser = createAsyncThunk(
   async (credentials, { dispatch, rejectWithValue }) => {
     try {
       dispatch(loginStart());
+      console.log('Attempting to login with credentials:', credentials);  
+
       const response = await axiosInstance.post('/api/token/', credentials);
-      dispatch(loginSuccess(response.data));
-      return response.data;
+      console.log('Response from /api/token/:', response); 
+
+      if (response.status !== 200) {
+        throw new Error('Неверный логин или пароль');
+      }
+
+      const { access } = response.data;
+      localStorage.setItem('accessToken', access);
+
+      const allTeachers = await axiosInstance.get('http://193.46.198.101/api/teachers/', {
+        headers: { Authorization: `Bearer ${access}` },
+      });
+
+      const currentUser = allTeachers.data.find(
+        (teacher) => teacher.username === credentials.username
+      );
+
+      if (!currentUser) {
+        throw new Error('Пользователь не найден среди учителей');
+      }
+
+      const userInfo = await axiosInstance.get(`http://193.46.198.101/api/teachers/${currentUser.id}/`, {
+        headers: { Authorization: `Bearer ${access}` },
+      });
+
+      return { tokens: { access }, userInfo: userInfo?.data };
     } catch (error) {
-      dispatch(loginFailure());
-      return rejectWithValue(error.response.data);
+      console.error('Error during login:', error); 
+      const errorMessage = error.response ? error.response.data : error.message;
+      return rejectWithValue(errorMessage);
     }
   }
 );
@@ -20,7 +46,7 @@ const initialState = {
   tokens: null,
   userInfo: null,
   loading: false,
-  error: false,
+  error: null, 
 };
 
 export const userSlice = createSlice({
@@ -34,11 +60,11 @@ export const userSlice = createSlice({
       state.tokens = action.payload.tokens;
       state.userInfo = action.payload.userInfo;
       state.loading = false;
-      state.error = false;
+      state.error = null; 
     },
-    loginFailure: (state) => {
+    loginFailure: (state, action) => {
       state.loading = false;
-      state.error = true;
+      state.error = action.payload; 
     },
     setToken: (state, action) => {
       state.tokens = action.payload;
@@ -47,23 +73,24 @@ export const userSlice = createSlice({
       state.tokens = null;
       state.userInfo = null;
       state.loading = false;
-      state.error = false;
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginUser.pending, (state) => {
+      .addCase(LoginUser.pending, (state) => {
         state.loading = true;
+        state.error = null; 
       })
-      .addCase(loginUser.fulfilled, (state, action) => {
+      .addCase(LoginUser.fulfilled, (state, action) => {
         state.tokens = action.payload.tokens;
         state.userInfo = action.payload.userInfo;
         state.loading = false;
-        state.error = false;
+        state.error = null;
       })
-      .addCase(loginUser.rejected, (state) => {
+      .addCase(LoginUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = true;
+        state.error = action.payload || 'Ошибка при входе'; 
       });
   },
 });
@@ -72,4 +99,3 @@ export const { loginStart, loginSuccess, loginFailure, setToken, logOut } =
   userSlice.actions;
 
 export default userSlice.reducer;
-
