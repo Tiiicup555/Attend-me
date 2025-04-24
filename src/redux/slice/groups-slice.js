@@ -15,21 +15,6 @@ export const getGroups = async () => {
   }
 };
 
-export const createGroup = async ({ name, teacher }) => {
-  try {
-    const response = await axiosInstance.post("/api/groups/", {
-      name,
-      teacher,
-    });
-    return { success: true, data: response.data };
-  } catch (error) {
-    return {
-      success: false,
-      error: error.response?.data || error.message,
-    };
-  }
-};
-
 export const editGroup = async (id, newName) => {
   try {
     const response = await axiosInstance.patch(`/api/groups/${id}/`, 
@@ -59,5 +44,30 @@ export const deleteGroup = async (id) => {
   }
 };
 
+
+export const getGroupDetail = async (id) => {
+  try {
+    const response = await axiosInstance.get(`/api/groups/${id}/`);
+    return { success: true, data: response.data };
+  } catch (error) {
+    console.error("Ошибка при получении деталей группы:", error.response?.data || error);
+    return { success: false, error: error.response?.data };
+  }
+};
+
+export const createGroup = async ({ name, teacher }) => {
+  try {
+    const response = await axiosInstance.post("/api/groups/", {
+      name,
+      teacher,
+    });
+    return { success: true, data: response.data };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.response?.data || error.message,
+    };
+  }
+};
 
 

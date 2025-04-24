@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Layout } from "../../../layout/layout";
 import { Modal, Card, Form, Input, Button, notification } from "antd";
-import { createGroup, deleteGroup, editGroup, getGroups } from "../../../redux/slice/groups-slice";
+import { createGroup, deleteGroup, editGroup, getGroupDetail, getGroups } from "../../../redux/slice/groups-slice";
+import { useNavigate } from "react-router-dom";
 
 export const GroupsPage = () => {
     const [groups, setGroups] = useState([]);
@@ -11,6 +12,7 @@ export const GroupsPage = () => {
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [editedName, setEditedName] = useState("");
     const [editingGroupId, setEditingGroupId] = useState(null);
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -72,6 +74,22 @@ export const GroupsPage = () => {
         }
     };
 
+    const handleGroupClick = async (groupId) => {
+        const teacherId = localStorage.getItem("teacherId");
+
+        const response = await getGroupDetail(groupId);
+
+        if (response.success) {
+            if (response.data.teacher === parseInt(teacherId)) {
+                navigate(`/`); 
+            } else {
+                notification.error({ message: "Ошибка", description: "У вас нет доступа к этой группе!" });
+            }
+        } else {
+            notification.error({ message: "Ошибка при получении информации о группе", description: response.error });
+        }
+    };
+
     const openEditModal = (group) => {
         setEditingGroupId(group.id);
         setEditedName(group.name);
@@ -87,7 +105,9 @@ export const GroupsPage = () => {
                         className="card"
                         key={group.id} 
                         title={group.name} 
-                        style={{ width: 300, height: 200, marginRight: 16 }}>
+                        style={{ width: 300, height: 200, marginRight: 16 }}
+                        onClick={() => handleGroupClick(group.id)}
+                        >
                         <div className="card-btn">
                         {[
                             <Button className="edit-btn" type="link" onClick={() => openEditModal(group)}>Изменить</Button>,
