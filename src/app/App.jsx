@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from '../pages/shared/home/HomePage';
 import { LoginPage } from '../pages/shared/login/LoginPage';
+import { GroupsPage } from '../pages/shared/groups';
 
 
 
@@ -11,6 +12,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<LoginPage/>} />
         <Route path='/home' element={<HomePage/>} />
+        <Route path='/groups' element={<GroupsPage/>} />
       </Routes>
   );
 }

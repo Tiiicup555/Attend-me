@@ -1,0 +1,85 @@
+.left {
+    padding-top: 100px;
+    height: 500px;
+    display: flex;
+}
+
+
+.group-modalCard {
+    margin: 30px 30px !important;
+}
+
+.group-createBtn {
+    font-size: 15px;
+    line-height: 30.26px;
+    letter-spacing: 1%;
+    background-color: rgba(255, 54, 54, 0.745);
+    color: black;
+    box-shadow: 0 0 20px rgba(198, 59, 59, 0.773) !important;
+}
+
+.group-createBtn:hover {
+    background-color: rgba(223, 14, 14, 0.773) !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+.home-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px; 
+    padding: 6px 30px;
+    align-items: center;
+}
+
+.card-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px;
+}
+
+.edit-btn {
+    padding: 20px 30px;
+    background-color: rgba(67, 67, 202, 0.901) !important;
+    color: white !important;
+}
+
+.delete-btn {
+    padding: 20px 30px;
+    background-color: rgba(223, 14, 14, 0.773) !important;
+    color: white !important;
+}
+
+.edit-btn:hover {
+    padding: 20px 30px;
+    background-color: rgba(99, 99, 206, 0.835) !important;
+    color: white !important;
+}
+
+.delete-btn:hover {
+    padding: 20px 30px;
+    background-color: rgba(224, 75, 75, 0.773) !important;
+    color: white !important;
+}
+
+.modal-btn {
+    background-color: rgba(223, 14, 14, 0.773) !important;
+}
+
+.modal-btn:hover {
+    background-color: rgba(224, 75, 75, 0.773) !important;
+}
+
+.modal-input {
+    border-color: rgb(143, 143, 143) !important;
+}
+
+.modal-input:hover {
+    border-color: rgba(223, 14, 14, 0.773) !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card {
+    box-shadow: 0 0 20px rgba(198, 59, 59, 0.773) !important;
+}
+  
