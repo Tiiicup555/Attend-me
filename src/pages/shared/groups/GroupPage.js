@@ -95,6 +95,11 @@ export const GroupsPage = () => {
         setEditedName(group.name);
         setIsEditModalOpen(true);
     };
+
+    const openDeleteModal = (e, groupId) => {
+        e.stopPropagation(); 
+        handleDeleteGroup(groupId);
+    };
       
     return (
         <Layout>
@@ -109,10 +114,24 @@ export const GroupsPage = () => {
                         onClick={() => handleGroupClick(group.id)}
                         >
                         <div className="card-btn">
-                        {[
-                            <Button className="edit-btn" type="link" onClick={() => openEditModal(group)}>Изменить</Button>,
-                            <Button className="delete-btn" type="link" danger onClick={() => handleDeleteGroup(group.id)}>Удалить</Button>,
-                        ]}
+                            <Button
+                                className="edit-btn"
+                                type="link"
+                                onClick={(e) => {
+                                    e.stopPropagation(); 
+                                    openEditModal(group);
+                                }}
+                            >
+                                Изменить
+                            </Button>
+                            <Button
+                                className="delete-btn"
+                                type="link"
+                                danger
+                                onClick={(e) => openDeleteModal(e, group.id)}
+                            >
+                                Удалить
+                            </Button>
                         </div>
                     </Card>
                 ))}
