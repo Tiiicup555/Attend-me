@@ -1,8 +1,23 @@
 import React from 'react';
 import { Button, Form, Input } from 'antd';
 import { ArrowRight, KeyPassword, UserProfile } from '../../../app/styles/icons/icons';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginFetch } from '../../../redux/slice/auth';
+
 
 const LoginAntd = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onFinish = (values) => {
+    const body = {
+      username: values.username,
+      password: values.password,
+    };
+    const url = '/api/token/';
+    dispatch(loginFetch(body, url, navigate));
+  };
 
   return (
     <Form
@@ -12,6 +27,7 @@ const LoginAntd = () => {
       autoComplete="off"
       labelAlign="top"
       requiredMark={false}
+      onFinish={onFinish}
     >
       <Form.Item
         className="login-form-item"
@@ -21,7 +37,7 @@ const LoginAntd = () => {
       >
         <Input
           className="login-input"
-          placeholder="Введите номер телефона или почту"
+          placeholder="Введите username"
           prefix={<UserProfile />}
         />
       </Form.Item>

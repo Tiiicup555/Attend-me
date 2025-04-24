@@ -6,7 +6,7 @@ export const loginUser = createAsyncThunk(
   async (credentials, { dispatch, rejectWithValue }) => {
     try {
       dispatch(loginStart());
-      const response = await axiosInstance.post('/teacher_api/login/teacher/', credentials);
+      const response = await axiosInstance.post('/api/token/', credentials);
       dispatch(loginSuccess(response.data));
       return response.data;
     } catch (error) {
