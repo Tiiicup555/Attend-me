@@ -1,0 +1,12 @@
+.card1 {
+    box-shadow: 0 0 20px rgba(198, 59, 59, 0.773) !important;
+    width: 1000px !important;
+}
+
+.board-body {
+    width: 1450px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
