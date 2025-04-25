@@ -3,6 +3,8 @@ import { Layout } from "../../../layout/layout";
 import { Modal, Card, Form, Input, Button, notification } from "antd";
 import { createGroup, deleteGroup, editGroup, getGroupDetail, getGroups } from "../../../redux/slice/groups-slice";
 import { useNavigate } from "react-router-dom";
+import axiosInstance from "../../../api/api";
+import { getBoardDetail } from "../../../redux/slice/board-slice";
 
 export const GroupsPage = () => {
     const [groups, setGroups] = useState([]);
@@ -13,7 +15,25 @@ export const GroupsPage = () => {
     const [editedName, setEditedName] = useState("");
     const [editingGroupId, setEditingGroupId] = useState(null);
     const navigate = useNavigate();
+    const [boards, setBoards] = useState([]);
 
+    const loadBoards = async () => {
+        try {
+          const res = await axiosInstance.get("/api/boards/");
+          const boards = res.data;
+      
+          const boardDetails = await Promise.all(
+            boards.map(async (board) => {
+              const response = await getBoardDetail(board.id); 
+              return response.success ? response.data : null;
+            })
+          );
+      
+          setBoards(boardDetails.filter((board) => board !== null));
+        } catch (err) {
+          console.error("Ошибка загрузки бордов", err);
+        }
+      };
 
     useEffect(() => {
         const storedTeacherId = localStorage.getItem("teacherId");
@@ -21,6 +41,7 @@ export const GroupsPage = () => {
             setTeacherId(parseInt(storedTeacherId)); 
         }
         loadGroups();
+        loadBoards(); 
     }, []);
   
     const loadGroups = async () => {
@@ -76,19 +97,39 @@ export const GroupsPage = () => {
 
     const handleGroupClick = async (groupId) => {
         const teacherId = localStorage.getItem("teacherId");
-
+    
         const response = await getGroupDetail(groupId);
-
+    
         if (response.success) {
             if (response.data.teacher === parseInt(teacherId)) {
-                navigate(`/`); 
+                const boardForGroup = boards.find((board) => board.group === groupId);
+    
+                console.log("Найденный борд для группы:", boardForGroup);
+    
+                if (boardForGroup) {
+                    console.log(`Переход на страницу борда с ID: ${boardForGroup.id}`);  
+                    navigate(`/board/${boardForGroup.id}`);
+                } else {
+                    notification.info({
+                        message: "Борд не найден",
+                        description: "Для этой группы пока нет борда.",
+                    });
+                }
             } else {
-                notification.error({ message: "Ошибка", description: "У вас нет доступа к этой группе!" });
+                notification.error({
+                    message: "Ошибка",
+                    description: "У вас нет доступа к этой группе!",
+                });
             }
         } else {
-            notification.error({ message: "Ошибка при получении информации о группе", description: response.error });
+            notification.error({
+                message: "Ошибка при получении информации о группе",
+                description: response.error,
+            });
         }
     };
+    
+
 
     const openEditModal = (group) => {
         setEditingGroupId(group.id);

@@ -1,6 +1,10 @@
 
 .home-body {
     display: flex;
+    width: 1500px;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
  
 .home-aside {
@@ -86,5 +90,17 @@
     border: none;
 }
 
+.home-title {
+    width: 1000px;
+    padding-bottom: 10px;
+    color: rgb(186, 56, 56);
+    padding-left: 3px;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 24.2px;
+    letter-spacing: 1%;
+    text-align: center;
+}
 
 
