@@ -71,14 +71,15 @@
     letter-spacing: 1%;
     padding: 35px 75px;
     border-radius: 300px;
-    background-color: rgb(255, 54, 54);
-    color: black;
+    background-color: #c0392b ;
+    color: #ffffff;
     margin-top: 20px;
 }
 
 .login-btn:hover {
-    background-color: rgb(147, 4, 4) !important;
-    color: rgb(255, 255, 255) !important;
+    color: #c0392b !important;
+    background-color: #ffffff !important;
+    border-color: #c0392b;
 }
 
 
@@ -175,7 +176,7 @@
     font-weight: 900;
     font-size: 50px;
     color: rgb(153, 0, 0);
-  }
+}
 
   
   

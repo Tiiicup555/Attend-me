@@ -1,12 +1,120 @@
+
 .card1 {
-    box-shadow: 0 0 20px rgba(198, 59, 59, 0.773) !important;
-    width: 1000px !important;
+  box-shadow: 0 0 20px rgba(198, 59, 59, 0.773) !important;
+  width: 1000px !important;
 }
 
 .board-body {
-    width: 1450px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 50px;
+  width: 1450px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 25px;
 }
+
+.stu-add {
+  background-color: rgba(67, 67, 202, 0.901) !important;
+}
+
+.stu-add:hover {
+  background-color: white!important;
+  border-color: rgba(67, 67, 202, 0.901);
+  color: rgba(67, 67, 202, 0.901) !important;
+}
+
+.table-attendance {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: max-content;
+  border-collapse: collapse;
+}
+
+.table-attendance th, .table-attendance td {
+    border: 1px solid #f0f0f0;
+    padding: 8px;
+    text-align: center;
+}
+
+.excel {
+  padding: 10px 30px;
+  background-color: rgba(44, 140, 76, 0.901) !important;
+  color: white !important;
+}
+
+.excel:hover {
+  padding: 10px 30px;
+  background-color:  white !important;
+  border-color:  rgba(44, 140, 76, 0.901);
+  color:  rgba(44, 140, 76, 0.901) !important;
+}
+
+
+
+.attendance-table-wrapper {
+  max-height: 430px;
+  overflow: scroll;
+}
+
+.attendance-table-wrapper table {
+  width: max-content; 
+  border-collapse: collapse;
+}
+
+.attendance-table-wrapper thead th {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 2;
+}
+
+.attendance-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.attendance-table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+}
+
+.table-attendance.no-action-column {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table-attendance.no-action-column th:first-child,
+.table-attendance.no-action-column td:first-child {
+  width: 150px;
+}
+
+.table-attendance.no-action-column th:not(:first-child),
+.table-attendance.no-action-column td:not(:first-child) {
+  width: calc((100% - 150px) / 10); 
+  text-align: center;
+}
+
+.today-column {
+  background-color: #eaeaea4a !important; 
+}
+
+.turn-btn:hover {
+  border-color: rgba(67, 67, 202, 0.901) !important;
+  color: rgba(67, 67, 202, 0.901) !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

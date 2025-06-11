@@ -1,0 +1,74 @@
+.profile-body {
+    width: 1450px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 70px;
+}
+
+.profileCard {
+    box-shadow: 0 0 20px rgba(198, 59, 59, 0.773) !important;
+    width: 600px !important;
+    height: max-content;
+}
+  
+.description {
+    margin-top: 10px;
+    font-style: italic;
+    color: #555;
+}
+  
+.infoItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 16px;
+    color: #444;
+}
+
+.avatar {
+    border: 1px solid rgba(224, 75, 75, 0.773);
+    display: block;
+    margin: 0 auto; 
+    position: relative;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 140px; 
+    margin: 0 auto;
+}
+
+.edit-avatar-btn {
+    border-color: #c0392b; 
+    padding: 15px 20px;
+    font-size: 15px;
+    margin-top: 10px;
+    color: #c0392b; ;
+}
+  
+.p-btn {
+    color: #c0392b !important; 
+    border-color: #c0392b; 
+    background: transparent;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.p-btn:hover,
+.p-btn:focus,
+.p-btn:active {
+    color: #fff !important;
+    background-color: #c0392b !important;
+    border-color: #c0392b !important;
+    box-shadow: none !important;
+}
+
+.t-card {
+    box-shadow: 0 0 5px rgba(164, 134, 134, 0.773) !important;
+}
+
+.t-card:hover {
+    box-shadow: 0 0 10px rgba(198, 59, 59, 0.773) !important;
+}

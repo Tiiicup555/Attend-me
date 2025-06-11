@@ -10,17 +10,21 @@ export const getAttendances = async () => {
     }
 };
 
-export const updateAttendanceStatus = async (attendanceId, newStatus) => {
-    try {
-      const response = await axiosInstance.patch(`/api/attendances/${attendanceId}/`, {
-        status: newStatus, 
-      });
-      return { success: true, data: response.data };
-    } catch (error) {
-      console.error('Ошибка при обновлении статуса посещаемости:', error);
-      return { success: false, error: error.response?.data };
-    }
-  };
+export const updateAttendanceStatus = async (id, status, student, board, date) => {
+  try {
+    const response = await axiosInstance.put(`/api/attendances/${id}/`, {
+      student,
+      board,
+      status,
+      date,
+    });
+    return { success: true, data: response.data };
+  } catch (error) {
+    console.error("Ошибка обновления посещаемости:", error.response?.data || error.message);
+    return { success: false };
+  }
+};
+
   
   
   

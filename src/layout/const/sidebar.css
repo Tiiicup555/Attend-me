@@ -34,6 +34,7 @@
 .aside-nav {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 hr {
@@ -48,6 +49,7 @@ hr {
     transition: background-color 0.3s ease, color 0.3s ease; 
     cursor: pointer;
     z-index: 1;
+
 }
 
 .nav-username {
@@ -146,5 +148,78 @@ hr {
     z-index: -3;
 }
 
+.groups-wrapper {
+    width: max-content;
+    border-radius: 15px;
+    color: white;
+    transition: background-color 0.2s ease, color 0.1s ease; 
+    cursor: pointer;
+    z-index: 1;
+}
+
+.groups-wrapper.hovered,
+.groups-wrapper.open {
+    width: max-content;
+    background-color: rgba(255, 255, 255, 0.555);
+    color: rgb(245, 58, 58);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+  
+.groups-wrapper.open .nav-btn1 {
+    color: rgb(245, 58, 58);  
+    background-color: #ffffff;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.groups-wrapper.open .nav-btn1:hover {
+    color: rgb(245, 58, 58);  
+    background-color: #ffffff;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.group-list {
+    gap: 10px;
+    border-radius: 15px ;
+}
+  
+.group-link {
+    padding: 20px 0 20px 20px;
+    gap: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: inherit; 
+    border-bottom: 1px solid #ffffff;
+}
+  
+.group-link:hover {
+    background-color: white;
+    color: rgb(245, 58, 58);
+}
+
+.nav-btn1 {
+    display: flex;
+    padding: 20px 20px;
+    width: 200px;
+    color: white;
+    z-index: 1;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-btn1:hover {
+    padding: 20px 20px;
+    background-color: white;
+    border-radius: 15px;
+    color: rgb(245, 58, 58);
+}
+
+.group-link:last-child {
+    border-bottom: none;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+  
 
 

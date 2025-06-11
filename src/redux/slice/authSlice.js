@@ -17,7 +17,7 @@ export const LoginUser = createAsyncThunk(
       const { access } = response.data;
       localStorage.setItem('accessToken', access);
 
-      const allTeachers = await axiosInstance.get('http://193.46.198.101/api/teachers/', {
+      const allTeachers = await axiosInstance.get('http://127.0.0.1:8000/api/teachers/', {
         headers: { Authorization: `Bearer ${access}` },
       });
 
@@ -29,7 +29,7 @@ export const LoginUser = createAsyncThunk(
         throw new Error('Пользователь не найден среди учителей');
       }
 
-      const userInfo = await axiosInstance.get(`http://193.46.198.101/api/teachers/${currentUser.id}/`, {
+      const userInfo = await axiosInstance.get(`http://127.0.0.1:8000/api/teachers/${currentUser.id}/`, {
         headers: { Authorization: `Bearer ${access}` },
       });
 

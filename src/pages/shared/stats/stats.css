@@ -1,0 +1,105 @@
+.title-stats {
+    font-size: 30px;
+    padding: 10px 0;
+}
+
+.stats-page {
+    padding: 20px;
+    width: 1479px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.students-container {
+    height: 820px;
+    overflow-y: scroll;
+    padding: 16px;
+    margin-top: 10px;
+}
+
+.students-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.student-card {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+.search-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px 20px;
+    margin-bottom: 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+    
+.stats-page {
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-controls {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.search-input,
+.month-input {
+  margin-left: 15px;
+  padding: 8px 20px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.students-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  flex-grow: 1;
+}
+
+.student-card {
+  width: 300px;
+  min-height: 160px;
+  box-shadow: 0 0 20px rgb(210, 210, 210);
+}
+
+.month-input {
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+.students-list.scrollable-list {
+    max-height: 700px; 
+    padding-right: 8px;
+}
+
+.student-card {
+    margin-bottom: 16px;
+}
+
+.students-list.scrollable-list::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+}
+
+

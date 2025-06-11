@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, Input, message } from 'antd';
 import { ArrowRight, KeyPassword, UserProfile } from '../../../app/styles/icons/icons';
 import { useNavigate } from 'react-router-dom';
@@ -7,12 +7,20 @@ import axios from 'axios';
 
 const LoginAntd = () => {
   const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      navigate("/home", { replace: true });
+    }
+  }, [navigate]);
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      const response = await axios.post('http://193.46.198.101/api/token/', {
+      const response = await axios.post('http://127.0.0.1:8000/api/token/', {
         username: values.username,
         password: values.password,
       }, {
@@ -24,7 +32,7 @@ const LoginAntd = () => {
       const token = response.data.access;
       localStorage.setItem('accessToken', token);
 
-      const userInfo = await axios.get('http://193.46.198.101/api/teachers/', {
+      const userInfo = await axios.get('http://127.0.0.1:8000/api/teachers/', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

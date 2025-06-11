@@ -1,34 +1,47 @@
 .left {
+    width: 1500px;
     padding-top: 100px;
-    height: 500px;
+    height: 940px;
+    overflow: hidden;
     display: flex;
+    flex-direction: column ;
 }
-
 
 .group-modalCard {
     margin: 30px 30px !important;
 }
 
+.upper {
+    flex-shrink: 0;
+    padding: 20px 40px 20px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
 .group-createBtn {
+    padding: 20px 30px !important;
     font-size: 15px;
-    line-height: 30.26px;
-    letter-spacing: 1%;
-    background-color: rgba(255, 54, 54, 0.745);
-    color: black;
-    box-shadow: 0 0 20px rgba(198, 59, 59, 0.773) !important;
+    background-color: rgb(210, 86, 86);
 }
 
 .group-createBtn:hover {
-    background-color: rgba(223, 14, 14, 0.773) !important;
-    color: rgb(255, 255, 255) !important;
+    background-color: white !important;
+    color: rgb(210, 86, 86)!important;
+    border-color: rgba(210, 86, 86, 0.773);
 }
 
 .home-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 25px; 
-    padding: 6px 30px;
-    align-items: center;
+    padding: 20px 60px;
+    height: 900px;
+    overflow-x: auto; 
+    align-content: flex-start; 
+}
+
+.card {
+    height: max-content;
+    margin: 0 30px 30px 0 !important;
 }
 
 .card-btn {
@@ -38,28 +51,12 @@
     gap: 10px;
 }
 
-.edit-btn {
-    padding: 20px 30px;
-    background-color: rgba(67, 67, 202, 0.901) !important;
-    color: white !important;
+.next-btn {
+    color: rgba(67, 67, 202, 0.901) !important;
 }
 
-.delete-btn {
-    padding: 20px 30px;
-    background-color: rgba(223, 14, 14, 0.773) !important;
-    color: white !important;
-}
-
-.edit-btn:hover {
-    padding: 20px 30px;
-    background-color: rgba(99, 99, 206, 0.835) !important;
-    color: white !important;
-}
-
-.delete-btn:hover {
-    padding: 20px 30px;
-    background-color: rgba(224, 75, 75, 0.773) !important;
-    color: white !important;
+.next-btn:hover {
+    color: rgba(99, 99, 206, 0.835) !important;
 }
 
 .modal-btn {
@@ -80,6 +77,55 @@
 }
 
 .card {
-    box-shadow: 0 0 20px rgba(198, 59, 59, 0.773) !important;
+    box-shadow: 0 0 10px rgba(198, 59, 59, 0.773) !important;
+}
+
+.card-title {
+    font-family: Inter;
+    font-size: 14px;
+    line-height: 30.26px;
+    letter-spacing: 1%;
+    color: rgb(145, 145, 145);
+}
+
+.card-icons {
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.edit-del, 
+.edit-del1 {
+    border: none;
+}
+
+.edit-del {
+    color: rgb(197, 195, 195) !important;
+}
+
+.edit-del:hover {
+    color: rgb(80, 80, 154) !important;
+}
+
+.edit-del1 {
+    color: rgb(243, 37, 37);
+}
+
+.edit-del1:hover {
+    color: rgba(243, 37, 37, 0.533) !important;
+}
+
+.card-title-bar {
+    display: flex;
+    align-items: center;
+}
+
+.icon-group {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.g-name {
+    padding-right: 10px;
 }
   
